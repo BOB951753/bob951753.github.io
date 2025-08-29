@@ -2,37 +2,84 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.36/vue.global.min.js"></script>
 <style>
-.class1{
-  background: #444;
-  color: #eee;
+#app{
+  gap: 1rem;
+}
+
+.container{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: 60%;
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.product-item{
+  flex-grow: 1;
+  text-align: center;
 }
 </style>
 </head>
 <body>
 <div id="app">
-  <label for="r1">修改颜色9</label><input type="checkbox" v-model="use" id="r1">
-  <br><br>
-  <div v-bind:class="{'class1': use}">
-    v-bind:class 指令
+  <h1>當前飢餓狀態</h1>
+  <h2 v-if="status === 'large'">
+    吃得飽飽的，真開心！
+  </h2>
+  <h2 v-else-if="status === 'midium'">
+    肚子不會餓，但還有點嘴饞！
+  </h2>
+  <h2 v-else-if="status === 'small'">
+    吃太少反而更想吃QQ
+  </h2>
+  <h2 v-else>
+    可以點餐吃了嗎？好餓！
+  </h2>
+  <div class="container">
+    🍔 點餐櫃檯
+    <div class="product-item">
+      <p>餐點說明：漢堡 + 中薯 + 中杯可樂</p>
+      <button @click="orderFood('large')">大麥克套餐</button>
+    </div>
+    <div class="product-item">
+      <p>餐點說明：小杯可樂 + 法式芥末香鷄堡</p>
+      <button @click="orderFood('midium')">1 + 1 套餐</button>
+    </div>
+    <div class="product-item">
+      <p>餐點說明：小薯</p>
+      <button @click="orderFood('small')">單點小薯</button>
+    </div>
   </div>
 </div>
 
 <script>
-const app = {
-  data() {
-    return {
-      use: false
+const { createApp } = Vue
+
+const rootComponent = {
+  data(){
+    return{
+      status: '',
+    }
+  },
+  methods:{
+    // 點餐行動
+    orderFood(type){
+      this.status = type;
     }
   }
 }
- 
-Vue.createApp(app).mount('#app')
+
+const app = createApp(rootComponent)
+
+app.mount('#app')
+
 </script>
 </body>
 </html>
+
 
 
 
