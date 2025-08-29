@@ -3,42 +3,33 @@
 <head>
 <meta charset="utf-8">
 <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.31/vue.global.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/4.2.4/vue-router.global.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.36/vue.global.min.js"></script>
+<style>
+.class1{
+  background: #444;
+  color: #eee;
+}
+</style>
 </head>
 <body>
 <div id="app">
-  <h1>Hello App!</h1>
-  <p>
-    <router-link to="/">Go to Home</router-link>
-    <router-link to="/about">Go to About</router-link>
-  </p> 
-  <router-view></router-view>
+  <label for="r1">修改颜色</label><input type="checkbox" v-model="use" id="r1">
+  <br><br>
+  <div v-bind:class="{'class1': use}">
+    v-bind:class 指令
+  </div>
 </div>
 
 <script>
-
-const Home = { template: '<div>Home</div>' }
-const About = { template: '<div>About</div>' }
+const app = {
+  data() {
+    return {
+      use: false
+    }
+  }
+}
  
-const routes = [
-  { path: '/', component: Home },
-  { path: '/about', component: About },
-]
-const router = VueRouter.createRouter({
-
-  history: VueRouter.createWebHashHistory(),
-  routes, // `routes: routes` 的缩写
-})
- 
-
-const app = Vue.createApp({})
-
-app.use(router)
- 
-app.mount('#app')
- 
-
+Vue.createApp(app).mount('#app')
 </script>
 </body>
 </html>
