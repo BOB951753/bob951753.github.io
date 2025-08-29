@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title> GitHub 網站</title>
+  <script src="https://cdn.staticfile.net/vue/3.2.26/vue.global.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -32,12 +33,43 @@
     .btn:hover {
       background: #555;
     }
+    .important {
+  color: red;
+  font-weight: bold;
+}
+.normal-text {
+  color: black;
+}
   </style>
 </head>
+  <script setup>
+import { ref, computed } from 'vue';
+
+const vueLogoUrl = ref('https://vuejs.org/images/logo.png');
+const isImportant = ref(true);
+
+// 我們也可以綁定一個 computed property
+const textClasses = computed(() => ({
+  'important': isImportant.value,
+  'normal-text': !isImportant.value,
+}));
+</script>
 <body>
-  <h1> Hello, GitHub Pages!</h1>
-  <p>bob1111111111111 page</p>
-  <a class="btn" href="https://github.com/" target="_blank">前往 GitHub</a>
+<template>
+  <!-- 基本綁定 -->
+  <img :src="vueLogoUrl" alt="Vue Logo">
+
+  <!-- 綁定 class -->
+  <p :class="textClasses">這段文字會根據 isImportant 的值改變樣式。</p>
+
+  <!-- 切換按鈕 -->
+  <button @click="isImportant = !isImportant">
+    切換重要性
+  </button>
+</template>
+
+
 </body>
 
 </html>
+
