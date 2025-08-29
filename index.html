@@ -25,32 +25,32 @@
 </head>
 <body>
 <div id="app">
-  <h1>當前飢餓狀態</h1>
+  <h1>111</h1>
   <h2 v-if="status === 'large'">
-    吃得飽飽的，真開心！
+    222-large
   </h2>
   <h2 v-else-if="status === 'midium'">
-    肚子不會餓，但還有點嘴饞！
+    333-midium
   </h2>
   <h2 v-else-if="status === 'small'">
-    吃太少反而更想吃QQ
+    444-small
   </h2>
   <h2 v-else>
-    可以點餐吃了嗎？好餓！
+    555-end
   </h2>
   <div class="container">
-    🍔 點餐櫃檯
+    ★
     <div class="product-item">
-      <p>餐點說明：漢堡 + 中薯 + 中杯可樂</p>
-      <button @click="orderFood('large')">大麥克套餐</button>
+      <p>order1</p>
+      <button @click="orderFood('large')">buy1</button>
     </div>
     <div class="product-item">
-      <p>餐點說明：小杯可樂 + 法式芥末香鷄堡</p>
-      <button @click="orderFood('midium')">1 + 1 套餐</button>
+      <p>order2</p>
+      <button @click="orderFood('midium')">buy2</button>
     </div>
     <div class="product-item">
-      <p>餐點說明：小薯</p>
-      <button @click="orderFood('small')">單點小薯</button>
+      <p>order3</p>
+      <button @click="orderFood('small')">buy3</button>
     </div>
   </div>
 </div>
@@ -79,6 +79,7 @@ app.mount('#app')
 </script>
 </body>
 </html>
+
 
 
 
