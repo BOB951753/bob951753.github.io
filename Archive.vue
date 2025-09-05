@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.36/vue.global.min.js"></script>
+<style>
+#app{
+  gap: 1rem;
+}
+
+.container{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: 60%;
+  border: 3px solid #ccc;
+  padding: 1rem;
+}
+
+.product-item{
+  flex-grow: 1;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <h1>CODE-STUDY-TEST</h1>
+  <h2 v-if="status === 'large'">
+    222-large
+  </h2>
+  <h2 v-else-if="status === 'midium'">
+    333-midium
+  </h2>
+  <h2 v-else-if="status === 'small'">
+    444-small
+  </h2>
+  <h2 v-else>
+    555-end
+  </h2>
+  <div class="container">
+    ★
+    <div class="product-item">
+      <p>order1</p>
+      <button @click="orderFood('large')">buy1</button>
+    </div>
+    <div class="product-item">
+      <p>order2</p>
+      <button @click="orderFood('midium')">buy2</button>
+    </div>
+    <div class="product-item">
+      <p>order3</p>
+      <button @click="orderFood('small')">buy3</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const { createApp } = Vue
+
+const rootComponent = {
+  data(){
+    return{
+      status: '',
+    }
+  },
+  methods:{
+    // 點餐行動
+    orderFood(type){
+      this.status = type;
+    }
+  }
+}
+
+const app = createApp(rootComponent)
+
+app.mount('#app')
+
+</script>
+</body>
+</html>
